@@ -1,3 +1,5 @@
+// problem collatz'a
+
 function hotpo(n){
     let counter = 0;
     if(n === 0) return 0;
