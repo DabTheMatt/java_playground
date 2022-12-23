@@ -14,7 +14,7 @@ function min_1(a, b){
     }
 }
 
-// solution z codewars
+// rozwiązanie z codewars
 
 function min(a, b){
     return (isNaN(a) || isNaN(b)) ? NaN : ((a < b) ? +a : +b);
