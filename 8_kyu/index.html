@@ -1,0 +1,49 @@
+<ol contenteditable>
+    <li id="first" style="color: blue; overflow: hidden">Press enter</li>
+  </ol>
+  
+
+<script>
+    const targetNode = document.getElementById('first');
+
+const config = {
+  attributes: true, 
+  childList: true, 
+  characterData: true
+};
+  
+const callback = mutations => {  
+  mutations.forEach(mutation => {
+    if (mutation.type === 'attributes') {
+
+      console.log(targetNode);
+      const listValues = Array.from(targetNode.children)
+          .map(node => node.style)
+
+      console.log(listValues);
+
+
+        if (listValues[0].color === 'green') {
+            console.log('hit');
+            const first = document.getElementById("first").textContent = "dupa";
+            document.getElementById("first").style.color = "red";
+            document.getElementById("first").style.overflow = "scroll";
+        }
+
+      const fragment = document.createDocumentFragment();
+        const h1 = fragment.appendChild(document.createElement('h1'))
+
+h1.textContent = 'hello world';
+
+document.body.appendChild(fragment);
+    }
+  });
+}
+
+
+
+const observer = new MutationObserver(callback);
+
+observer.observe(targetNode, config);
+
+</script>

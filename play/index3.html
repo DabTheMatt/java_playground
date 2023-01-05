@@ -1,0 +1,47 @@
+<style>
+      .observed {
+  width: 50vmin;
+  height: 50vmin;
+  color: red;
+}
+
+@media (min-width: 1024px) {
+  .observed {
+    color: blue;
+  }
+}
+
+@media (max-width: 700px) {
+  .observed {
+    color: gold;
+  }
+</style>
+
+<div class="observed">See this color changing.<br> Either click a button or resize the viewport.</div>
+
+<button onclick="observed.style.color = 'purple';">Click for purple</button>
+<button onclick="observed.style.color = 'magenta';">Click for magenta</button>
+<button onclick="observed.style.color = 'cyan';">Click for cyan</button>
+
+<script>
+    const observed = document.querySelector('.observed');
+const html = document.querySelector("html");
+let style = window.getComputedStyle(observed);
+// NOTE: from MDN: The returned style is a live CSSStyleDeclaration object, which updates automatically when the element's styles are changed.
+const observer = new MutationObserver(function(mutations) {
+  alert('a mutation observed');
+  mutations.forEach(function(mutation) {
+    alert(style.color);
+  });
+});
+
+function look() {
+  alert(style.color);
+}
+observer.observe(html, {
+  attributes: true,
+  subtree: true,
+  childList: true
+});
+window.onresize = look;
+</script>
