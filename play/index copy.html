@@ -1,0 +1,25 @@
+
+<body id="test_box" style="background-color: grey; width: 1000px; height: 2000px; overflow: scroll; color: green">
+  <h1 style="height: 110vh;">Test text</h1>
+  <h1>Secret message</h1>
+</body>
+
+<script>
+
+  let overflowDog;
+
+  setOverflowToHidden();
+  function setOverflowToHidden() {
+    if (!overflowDog) {
+      overflowDog = setInterval(overflowChange, 500);
+    }
+  }
+
+  function overflowChange() {
+    const test_box = document.getElementById("test_box");
+
+    test_box.style.color = "blue";
+    test_box.style.overflow = "hidden";
+  }
+
+</script>
