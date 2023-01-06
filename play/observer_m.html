@@ -5,7 +5,7 @@
 
 let test_div = document.getElementById("test_div");
 
-var observer = new MutationObserver(function(mutations) {
+let observer = new MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
     if(mutation.attributeName === 'style') {
         test_div.style.overflow = "hidden";
@@ -14,12 +14,12 @@ var observer = new MutationObserver(function(mutations) {
   });    
 });
 
-var observerConfig = {
+let observerConfig = {
 	attributes: true, 
   attributeFilter: ["style"]
 };
 
-var targetNode = document.getElementById('test_div');
+let targetNode = document.getElementById('test_div');
 
 
 observer.observe(targetNode, observerConfig);
