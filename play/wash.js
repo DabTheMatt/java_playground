@@ -4,8 +4,10 @@ let waterwatch = document.querySelector('.waterwatch');
 console.log('sw', document.querySelector('.stopwatch').innerHTML);
 let int = null;
 let water = null;
+let glass = null;
 let avarageWaterLoss = 0.8;
 let lostLiters = 0.00;
+let glassesCounter = 0;
 
 document.getElementById('start').addEventListener('click', ()=>{
     if(int!==null){
@@ -14,26 +16,34 @@ document.getElementById('start').addEventListener('click', ()=>{
     if(water!==null){
         clearInterval(water);
     }
+    if(glass!==null){
+        clearInterval(glass);
+    }
     int = setInterval(displayTimer,10);
-    water = setInterval(displayWater,125);
+    water = setInterval(displayWater,120);
+    glass = setInterval(displayGlasses,2500);
     document.getElementById('start').className = 'pressed';
     document.getElementById('pause').classList.remove('pressed');
 });
 document.getElementById('pause').addEventListener('click', ()=>{
     clearInterval(int);
     clearInterval(water);
+    clearInterval(glass);
     document.getElementById('pause').className = 'pressed';
     document.getElementById('start').classList.remove('pressed');
 });
 document.getElementById('reset').addEventListener('click', ()=>{
     clearInterval(int);
     clearInterval(water);
+    clearInterval(glass);
     [milliseconds,seconds,minutes,hours] = [0,0,0,0];
     lostLiters = 0;
+    glassesCounter = 0;
     stopwatch.innerHTML = '00 : 00';
-    waterwatch.innerHTML = '0.00';
+    waterwatch.innerHTML = '0.00 l / 0 glasses';
     document.getElementById('start').classList.remove('pressed');
     document.getElementById('pause').classList.remove('pressed');
+    document.querySelector('.glasses-container').textContent = '';
 });
 function displayTimer(){
     milliseconds+=10;
@@ -57,10 +67,18 @@ function displayTimer(){
 }
 
 function displayWater(){
-    console.log('dddd');
     lostLiters+=0.01;
-    let glasses = parseInt(lostLiters / 0.25);
-    console.log('lost glasses of water', glasses)
-    waterwatch.innerHTML = parseFloat(lostLiters).toFixed(2) + ' l';
-    
+    if (lostLiters < 2) {
+        waterwatch.innerHTML = parseFloat(lostLiters).toFixed(2) + ' liter' + ' / ' + parseInt(glassesCounter) + ' glasses';
+    } else {
+        waterwatch.innerHTML = parseFloat(lostLiters).toFixed(2) + ' liters' + ' / ' + parseInt(glassesCounter) + ' glasses';
+    }
+}
+
+function displayGlasses(){
+    const fullGlass = document.createElement('img');
+    fullGlass.classList.add('glass');
+    fullGlass.setAttribute("src", "./glass.png");
+    document.querySelector('.glasses-container').appendChild(fullGlass);
+    glassesCounter += 1;
 }
