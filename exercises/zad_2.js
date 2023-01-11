@@ -25,7 +25,7 @@
 let example = [5, 7, 4, 9, 10, 5, 15, 9, 5];
 
 function sortKids(kids) {
-    let sorted = [];
+    let sorted = {};
 
     let zerowka = [];
     let pierwszaKlasa = [];
@@ -34,13 +34,27 @@ function sortKids(kids) {
     let czwartaKlasa = [];
 
     for (let i = 0; i < kids.length; i++) {
-        console.log(kids[i]);
         if (kids[i] === 5) {
             zerowka.push(kids[i]);
+        } else if (kids[i] === 6) {
+            pierwszaKlasa.push(kids[i])
+        } else if (kids[i] === 7) {
+            drugaKlasa.push(kids[i])
+        } else if (kids[i] === 8) {
+            trzeciaKlasa.push(kids[i])
+        } else if (kids[i] === 9) {
+            czwartaKlasa.push(kids[i])
         }
     }
 
-    console.log('z', zerowka)
+    sorted = {
+        'Zerówka': zerowka.length,
+        '1 klasa': pierwszaKlasa.length,
+        '2 klasa': drugaKlasa.length,
+        '3 klasa': trzeciaKlasa.length,
+        '4 klasa': czwartaKlasa.length
+    }
+
     return sorted;
 }
 
