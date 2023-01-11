@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <style>
+            .container {
+                width: auto;
+                height: 400px;
+                background-color: grey;
+
+                display: flex;
+                align-items: flex-start;
+                justify-content: flex-start;
+
+                flex-direction: row;
+                flex-wrap: wrap;
+                column-gap: 10px;
+                row-gap: 20px;
+            }
+            .item {
+                height: 200px;
+                width: 200px;
+                background-color: brown;
+                border: 1px solid black;
+            }
+            #i1 {
+                background-color: aqua;
+            }
+            #i2 {
+                align-self: flex-end;
+            }
+            #i3 {
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="i1" class="item">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quaerat quibusdam veritatis!</div>
+            <div id="i2" class="item">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempore cum excepturi sequi ad rem.</div>
+            <div id="i3" class="item">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Inventore adipisci eius praesentium veniam exercitationem!</div>
+        </div>
+    </body>
+</html>
