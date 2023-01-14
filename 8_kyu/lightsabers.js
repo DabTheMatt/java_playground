@@ -14,3 +14,6 @@
 howManyLight = ownerName => ownerName === 'Zach' ? 18 : 0;
 
 console.log(howManyLight('Piotrek'));
+
+
+
