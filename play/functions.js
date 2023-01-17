@@ -1,5 +1,13 @@
 const colors = ['red', 'blue', 'yellow'];
 
+colors.forEach((element) => console.log(element + ' something'));
+
+function addMr(string) {
+    return 'Mr' + string;
+}
+
+colors.forEach()
+
 function addP(word) {
     return word + ' dupa'
 }
@@ -20,3 +28,4 @@ console.log(newColors);
 
 
 // console.log(addP(string));
+
