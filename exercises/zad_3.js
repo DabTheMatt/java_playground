@@ -3,30 +3,22 @@
 
 let example = 'abacabad'
 
-function firestUnique(string) {
+// function firestUnique(string) {
 
-    // function onlyUnique(value, index, self) {
-    //     return self.indexOf(value) === index;
-    //   }
+//     function onlyUnique(value, index, self) {
+//         return self.indexOf(value) === index;
+//       }
 
-    string = Array.from(string);
+//     string = Array.from(string);
     
-    // let unique = string.filter(function(value, index, self) {
+//     let unique = string.filter(function(value, index, self) {
 
-    // console.log('value', value);
-    // console.log('index', index);
-    // console.log('self', self);
+//     return unique;
+//     });
 
-    // console.log(self.indexOf(value));
+// }
+// console.log(onlyUnique(example));
 
-    // return self.indexOf(value) === index;
-
-    
-    // });
-
-    let unique2 = [...new Set(string)];
-      
-    return unique2[0];
-}
-
-console.log(firestUnique(example));
+const arr = [1, 1, 4, 2, 2, 2, 3, 1];
+const result = arr.find((x) => arr.indexOf(x) === arr.lastIndexOf(x));
+console.log(result);
