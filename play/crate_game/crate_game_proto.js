@@ -60,7 +60,41 @@ class Player {
     }
 }
 
+class Projectail {
+    constructor({position, velocity}) {
+        this.position = position
+        this.velocity = velocity
+
+        this.radius = 3
+    }
+
+    draw() {
+        c.beginPath()
+        c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2)
+        c.fillStyle = 'red'
+        c.fill()
+        c.closePath()
+    }
+
+    update() {
+        this.draw()
+        this.position.x += this.velocity.x
+        this.position.y += this.velocity.y
+    }
+}
+
 const player = new Player();
+const projectails = [new Projectail({
+    position: {
+        x: 300,
+        y: 1000
+    },
+    velocity: {
+        x: 0,
+        y: -5
+    }
+})];
+
 const keys = {
     right: {
         pressed: false
@@ -84,6 +118,9 @@ function animate() {
     c.fillStyle = 'black'
     c.fillRect(0, 0, canvas.width, canvas.height);
     player.update()
+    projectails.forEach(projectail => {
+        projectail.update()
+    })
 
     if (keys.right.pressed && player.position.x + player.width <= canvas.width) {
         player.velocity.x = +player.speed
