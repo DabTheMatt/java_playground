@@ -1,0 +1,16 @@
+body {
+    background-color: red;
+}
+
+#test_box {
+    width: 1000px; 
+    height: 2000px; 
+    background-color: grey; 
+    
+    color: green;
+    overflow: hidden; 
+  }
+  
+#test_text {
+height: 110vh;
+}
